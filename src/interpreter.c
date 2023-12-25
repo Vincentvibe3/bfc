@@ -52,7 +52,7 @@ int scanLoops(char* program, int programLength, HashMap* jump_map){
 
 int start_interpreter(char* program){
 	int dataLength = 30000;
-	unsigned char* data = (char*) calloc(dataLength, sizeof(char));
+	unsigned char* data = (unsigned char*) calloc(dataLength, sizeof(unsigned char));
 	int programLength = strlen(program);
 	int progress = 0;
 	int dataPointer = 0;
@@ -107,7 +107,7 @@ int start_interpreter(char* program){
 				progress++;
 				break;
 			case ',':
-				char input;
+				unsigned char input = 0;
 				scanf("%c", &input);
 				data[dataPointer] = input;
 				progress++;

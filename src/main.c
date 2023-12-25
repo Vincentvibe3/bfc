@@ -13,6 +13,8 @@ int main(int argc, char* argv[]){
 		if (program==NULL){
 			return 1;
 		}
-		return start_interpreter(program);
+		int result = start_interpreter(program);
+		free(program);
+		return result;
 	}
 }

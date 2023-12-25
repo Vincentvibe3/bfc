@@ -43,7 +43,6 @@ char* load_program(char* path){
 		if (c_input<0){
 			continue;
 		}
-		// 8 is the number of valid characters in bf
 		HashMapGetResult queryResult = hashmap_get(tokenMap, c_input);
 		if (queryResult.found){
 			buffer[read_char] = c_input;

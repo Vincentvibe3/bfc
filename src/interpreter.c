@@ -70,7 +70,7 @@ int start_interpreter(char* program){
 		char instruction = program[progress];
 		int change = 1;
 		switch (instruction) {
-			case '>':
+			case '>': {
 				if (dataPointer == dataLength - 1){
 					dataPointer = 0;
 				} else {
@@ -78,7 +78,8 @@ int start_interpreter(char* program){
 				}
 				progress++;
 				break;
-			case '<':
+			}
+			case '<': {
 				if (dataPointer == 0){
 					dataPointer = dataLength - 1;
 				} else {
@@ -86,7 +87,8 @@ int start_interpreter(char* program){
 				}
 				progress++;
 				break;
-			case '+':
+			}
+			case '+': {
 				if (data[dataPointer] == 255){
 					data[dataPointer] = 0;
 				} else {
@@ -94,7 +96,8 @@ int start_interpreter(char* program){
 				}
 				progress++;
 				break;
-			case '-':
+			}
+			case '-': {
 				if (data[dataPointer] == 0){
 					data[dataPointer] = 255;
 				} else {
@@ -102,17 +105,20 @@ int start_interpreter(char* program){
 				}
 				progress++;
 				break;
-			case '.':
+			}
+			case '.': {
 				printf("%c", data[dataPointer]);
 				progress++;
 				break;
-			case ',':
+			}
+			case ',': {
 				unsigned char input = 0;
 				scanf("%c", &input);
 				data[dataPointer] = input;
 				progress++;
 				break;
-			case '[':
+			}
+			case '[': {
 				if (data[dataPointer]==0){
 					HashMapGetResult jumpResult = hashmap_get(jump_map, progress);
 					if (jumpResult.found){
@@ -125,7 +131,8 @@ int start_interpreter(char* program){
 					progress++;
 				}
 				break;
-			case ']':
+			}
+			case ']': {
 				if (data[dataPointer]!=0){
 					HashMapGetResult jumpResult = hashmap_get(jump_map, progress);
 					if (jumpResult.found){
@@ -138,10 +145,11 @@ int start_interpreter(char* program){
 					progress++;
 				}
 				break;
-			
-			default:
+			}
+			default: {
 				progress++;
 				break;
+			}
 		}
 	}
 	printf("\n");
